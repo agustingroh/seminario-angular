@@ -1,24 +1,13 @@
 import {Component, computed, effect, signal} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import {BeerList} from './beer-list/beer-list';
+import {CartList} from './cart-list/cart-list';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, BeerList, CartList],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-
-  contador = signal(0);
-  doble = computed(() => this.contador() * 2);
-  constructor() {
-    effect(() =>{
-      if (this.doble() > 10)
-        alert('El doble es mayor a 10')
-    });
-  }
-
-  sumar() {
-    this.contador.update(n => n + 1);
-  }
 }
